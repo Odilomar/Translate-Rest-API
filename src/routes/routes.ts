@@ -1,21 +1,21 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 
 import TranslateService from "../services/TranslateService";
 
 const router = Router();
 
-router.post('/en-pt', async (request, response) => {
+async function translate(request: Request, response: Response) {
     const { textToTranslate } = request.body;
-    const modelId: string = 'en-pt';
-
-    console.log(request.baseUrl);
+    const modelId: string = request.path.replace('/', '');
 
     const translateEnPtService: TranslateService = new TranslateService();
 
     const translatedText = await translateEnPtService.execute(textToTranslate, modelId);
 
     return response.json(translatedText);
-});
+}
+
+router.post('/en-pt', translate);
 
 // router.get('/pt-en', );
 
