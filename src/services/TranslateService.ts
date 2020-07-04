@@ -1,11 +1,7 @@
 import LanguageTranslatorV3 from "ibm-watson/language-translator/v3";
 import { IamAuthenticator } from "ibm-watson/auth";
 
-interface TranslatedText {
-    status: number;
-    statusText: string;
-    text: string;
-}
+import TranslatedText from "../interface/TranslatedInterface";
 
 class TranslateService {
     private languageTranslator: LanguageTranslatorV3;

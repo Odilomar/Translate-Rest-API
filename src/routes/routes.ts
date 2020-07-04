@@ -1,5 +1,7 @@
 import { Router } from "express";
+
 import TranslateService from "../services/TranslateService";
+
 const router = Router();
 
 router.post('/en-pt', async (request, response) => {
