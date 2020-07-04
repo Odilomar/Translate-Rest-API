@@ -7,7 +7,7 @@ interface TranslatedText {
     text: string;
 }
 
-class TranslateEnPtService {
+class TranslateService {
     private languageTranslator: LanguageTranslatorV3;
 
     constructor() {
@@ -46,4 +46,4 @@ class TranslateEnPtService {
     }
 }
 
-export default TranslateEnPtService;
+export default TranslateService;
