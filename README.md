@@ -1,5 +1,5 @@
-# :rocket: Translate API
-  This API is focused to translate text from English to Portuguese and from Portuguese to English using IBM Language Translator API.
+# :rocket: Translate Rest API
+  This API is focused to translate text from English to Portuguese and from Portuguese to English using [IBM Language Translator API](https://cloud.ibm.com/apidocs/language-translator).
   It is created using Typescript, NodeJs, ExpressJs and IBM Watson.
 
 ## :pushpin: Required
@@ -42,7 +42,7 @@
 
   This API has two routes: ``/en-pt`` and ``/pt-en``.
 
-  They are a **POST** Method and receive a JSON file with an object called "textToTranslate".
+  They are a **POST** Method, receive a JSON file with an object called "textToTranslate" and return a JSON file that contains "status", "statusText", "text".
 
 ## :wrench: Example
 
