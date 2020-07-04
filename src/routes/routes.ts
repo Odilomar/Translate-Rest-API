@@ -1,37 +1,16 @@
-import { Router, Response, Request } from "express";
-
-import LanguageTranslatorV3 from "ibm-watson/language-translator/v3";
-import { IamAuthenticator } from "ibm-watson/auth";
-
+import { Router } from "express";
+import TranslateEnPtService from "../services/TranslateEnPtService";
 const router = Router();
 
-const apiKey = process.env.LANGUAGE_TRANSLATOR_APIKEY ? process.env.LANGUAGE_TRANSLATOR_APIKEY : '';
-const url = process.env.LANGUAGE_TRANSLATOR_URL;
+router.post('/en-pt', async (request, response) => {
+    const { textToTranslate } = request.body;
 
-const languageTranslator = new LanguageTranslatorV3({
-    version: "2018-05-01",
-    authenticator: new IamAuthenticator({
-        apikey: apiKey,
-    }),
-    url: url,
-});
+    const translateEnPtService: TranslateEnPtService = new TranslateEnPtService();
 
-const translateParams = {
-    text: ["source"],
-    modelId: "en-pt",
-};
-
-async function translate(request: Request, response: Response) {
-    const translatedText = await languageTranslator
-        .translate(translateParams)
-        .then((translationResult) => {
-            return translationResult.result;
-        });
+    const translatedText = await translateEnPtService.execute(textToTranslate);
 
     return response.json(translatedText);
-}
-
-router.get('/en-pt', translate);
+});
 
 // router.get('/pt-en', );
 
