@@ -23,12 +23,12 @@ class TranslateService {
         });
     }
 
-    public async execute(textToTranslate: string): Promise<TranslatedText> {
+    public async execute(textToTranslate: string, modelId: string): Promise<TranslatedText> {
         const text = [textToTranslate];
 
         const translateParams = {
             text,
-            modelId: "en-pt",
+            modelId,
         };
 
         const translatedText: TranslatedText = await this.languageTranslator
